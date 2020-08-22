@@ -1,0 +1,17 @@
+.btn-new-article {
+  text-decoration: none !important;
+  display:block;
+  color: white;
+  background-color: #3bbaed;
+  padding: 8px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: .2s;
+  box-shadow: 2px 2px 5px;
+}
+
+.btn-new-article:hover {
+  background: #0ec4f2;
+  color: white;
+}
+
