@@ -4,9 +4,9 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:query].present?
-      @articles = Article.where("title ILIKE ?", "%#{params[:query]}%")
+      @articles = Article.where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5)
     else
-      @articles = Article.all
+      @articles = Article.page(params[:page]).per(5)
     end
   end
 
