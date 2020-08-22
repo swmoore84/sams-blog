@@ -4,14 +4,15 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:query].present?
-      @articles = Article.where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5)
+      @articles = Article.where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5).order(created_at: :asc)
     else
-      @articles = Article.page(params[:page]).per(5)
+      @articles = Article.page(params[:page]).per(5).order(created_at: :asc)
     end
   end
 
   def show
-
+    @article.views_count += 1
+    @article.save
   end
 
   def new
