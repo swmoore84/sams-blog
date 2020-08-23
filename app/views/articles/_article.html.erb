@@ -1,7 +1,7 @@
 <tr>
   <td><%= article.title %></td>
   <td><%= article.views_count %></td>
-  <td>author</td>
+  <td><%= article.user.email.split('@').first %></td>
   <td><%= article.published_date %></td>
   <td>
     <%= link_to 'Edit', edit_article_path(article)  %> |
