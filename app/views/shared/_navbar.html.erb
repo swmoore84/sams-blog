@@ -1,30 +1,16 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
+<div class="navbar navbar-expand-sm navbar-light navbar">
+  <%= render 'shared/search' %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li>
-          <%= form_tag articles_path, method: :get, class: "search-box" do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Search"
-            %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-          <% end %>
+
       </li>
       <li class="nav-item active">
         <%= link_to "Articles", articles_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <li class="nav-link active"> <%= current_user.email %></li>
       <% else %>
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
       <% end %>
