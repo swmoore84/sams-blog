@@ -7,19 +7,21 @@
       <%= link_to 'New', new_article_path, class: "btn-new-article" %>
     </div>
   </div>
-  <table class="table table-striped col-xs-12 col-md-8 offset-md-2">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Views Count</th>
-        <th scope="col">Author</th>
-        <th scope="col">Publish Date</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @articles %>
-    </tbody>
-  </table>
-      <%= paginate @articles %>
+  <div class="articles col-xs-12 col-md-8 offset-md-2">
+    <table class="table table-striped ">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Views Count</th>
+          <th scope="col">Author</th>
+          <th scope="col">Publish Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @articles %>
+      </tbody>
+    </table>
+    <%= paginate @articles %>
+  </div>
 </div>
