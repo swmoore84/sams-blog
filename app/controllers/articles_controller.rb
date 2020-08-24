@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
       @articles = policy_scope(Article).where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5).order(created_at: :asc)
     else
       @articles_count = Article.all.count
-      @articles = policy_scope(Article).page(params[:page]).per(5).order(created_at: :asc)
+      @articles = policy_scope(Article).page(params[:page]).per(5).order(created_at: :desc)
     end
   end
 
@@ -19,11 +19,13 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    authorize @article
   end
 
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    authorize @article
     if @article.save
       redirect_to article_path(@article)
     else

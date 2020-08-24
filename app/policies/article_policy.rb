@@ -17,6 +17,14 @@ class ArticlePolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def show?
+    true
+  end
+
+  def index?
+    true
+  end
+
   private
 
   def user_is_owner?
