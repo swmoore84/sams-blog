@@ -2,9 +2,9 @@
   <div class="index-header">
     <div class="article-count">
       <% if params[:query].present? %>
-        <%= pluralize @articles.count, "Article" %>
+        <%= pluralize @articles_count, "Article" %>
       <% else %>
-        <%= pluralize @articles_all.count, "Article" %>
+        <%= pluralize @articles_count, "Article" %>
       <% end %>
     </div>
     <div class="article-new">

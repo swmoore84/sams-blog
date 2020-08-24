@@ -3,10 +3,12 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles_all = Article.all
+    # @articles_all = Article.all
     if params[:query].present?
+      @articles_count = Article.where("title ILIKE ?", "%#{params[:query]}%").count
       @articles = Article.where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5).order(created_at: :asc)
     else
+      @articles_count = Article.all.count
       @articles = Article.page(params[:page]).per(5).order(created_at: :asc)
     end
   end
