@@ -3,12 +3,13 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
+    @all_articles = Article.where(user: current_user).or(Article.where(published: true))
     if params[:query].present?
-      @articles_count = Article.where("title ILIKE ?", "%#{params[:query]}%").count
-      @articles = policy_scope(Article).where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5).order(created_at: :asc)
+      @articles_count = @all_articles.where("title ILIKE ?", "%#{params[:query]}%").count
+      @articles = policy_scope(@all_articles).where("title ILIKE ?", "%#{params[:query]}%").page(params[:page]).per(5).order(created_at: :asc)
     else
-      @articles_count = Article.all.count
-      @articles = policy_scope(Article).page(params[:page]).per(5).order(created_at: :desc)
+      @articles_count = @all_articles.all.count
+      @articles = policy_scope(@all_articles).page(params[:page]).per(5).order(created_at: :desc)
     end
   end
 

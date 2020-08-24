@@ -1,4 +1,4 @@
-<% if article.user == current_user || article.published %>
+
   <tr>
     <td><div class="article-title"> <%= link_to article.title, article_path(article) %></div></td>
     <td><%= article.views_count %></td>
@@ -13,4 +13,4 @@
       <% end %>
     </td>
   </tr>
-<% end %>
+
