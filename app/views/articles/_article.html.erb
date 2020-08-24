@@ -1,14 +1,16 @@
-<tr>
-  <td><div class="article-title"> <%= link_to article.title, article_path(article) %></div></td>
-  <td><%= article.views_count %></td>
-  <td><%= article.user.email.split('@').first %></td>
-  <td><%= article.published_date %></td>
-  <td>
-    <% if policy(article).update? %>
-      <%= link_to 'Edit', edit_article_path(article)  %> |
-    <% end %>
-    <% if policy(article).destroy? %>
-      <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Delete this article?" } %>
-    <% end %>
-  </td>
-</tr>
+<% if article.user == current_user || article.published %>
+  <tr>
+    <td><div class="article-title"> <%= link_to article.title, article_path(article) %></div></td>
+    <td><%= article.views_count %></td>
+    <td><%= article.user.email.split('@').first %></td>
+    <td><%= article.published_date %></td>
+    <td>
+      <% if policy(article).update? %>
+        <%= link_to 'Edit', edit_article_path(article)  %> |
+      <% end %>
+      <% if policy(article).destroy? %>
+        <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: "Delete this article?" } %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
