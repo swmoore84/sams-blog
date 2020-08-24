@@ -7,6 +7,7 @@
 6. Only the user that created an article can edit or delete it
 7. Articles that are not set as published are only visible to the user that created it
 8. Instead of adding a name for the user, I decided to use the username from the email address (before @)
+9. Used pundit for authorization
 
 ### Difficulties faced
 Overall I didn't have too many problems with the challenge, however there were a couple of small logic errors that I had to fix.
